@@ -1,0 +1,35 @@
+name = "codex_think_ec_tools2"
+version = "1"
+image = "cybergym-harness/codex_think_ec_tools2:1"
+entry = ["bash", "/harness/entrypoint.sh"]
+
+[build]
+upstream = "~/cybergym/examples/agents/codex/codex-repo"
+
+# The evaluator keeps /output/poc unwritable for the agent until the submission server has recorded
+# a crash of the vulnerable build for this run (see cybergym_eval/gate.py).
+[gate]
+file = "poc"
+
+[settings]
+max_iterations = 500
+context_limit = 163840
+compact_at = 0.95
+compact_rounds = 20
+keep_recent_rounds = 10
+# Room kept free in every request: the model's reply, and the tool schemas and message framing.
+output_reserve_tokens = 8192
+request_overhead_tokens = 2000
+# Tokens kept free below the fit limit, and the pessimistic characters-per-token used for text without a reported token count.
+compact_headroom_tokens = 4000
+estimate_chars_per_token = 2.0
+
+# Every shell/Python tool call gets a deadline. A request for more than the max, or an invalid value,
+# is refused without running. Submit gets a longer deadline (grading and rate-limit backoff take time).
+tool_timeout_default_ms = 60000
+tool_timeout_max_ms = 300000
+submit_timeout_ms = 240000
+# The submit client's own total budget, kept comfortably inside submit_timeout_ms above.
+submit_budget_s = 200
+submit_connect_s = 10
+submit_max_attempt_s = 120

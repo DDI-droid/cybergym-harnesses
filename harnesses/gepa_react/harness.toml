@@ -1,0 +1,7 @@
+name = "gepa_react"
+version = "1"
+pseudo = true
+
+[settings]
+max_iters = 40
+max_tokens = 8000

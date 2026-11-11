@@ -1,0 +1,19 @@
+name = "codex_think_ec"
+version = "4"
+image = "cybergym-harness/codex_think_ec:4"
+entry = ["bash", "/harness/entrypoint.sh"]
+
+[build]
+upstream = "~/cybergym/examples/agents/codex/codex-repo"
+
+# The evaluator keeps /output/poc unwritable for the agent until the submission server has recorded
+# a crash of the vulnerable build for this run (see cybergym_eval/gate.py).
+[gate]
+file = "poc"
+
+[settings]
+max_iterations = 500
+context_limit = 163840
+compact_at = 0.95
+compact_rounds = 20
+keep_recent_rounds = 10

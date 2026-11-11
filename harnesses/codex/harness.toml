@@ -1,0 +1,10 @@
+name = "codex"
+version = "2"
+image = "cybergym-harness/codex:2"
+entry = ["bash", "/harness/entrypoint.sh"]
+
+[build]
+upstream = "~/cybergym/examples/agents/codex/codex-repo"
+
+[settings]
+max_iterations = 100

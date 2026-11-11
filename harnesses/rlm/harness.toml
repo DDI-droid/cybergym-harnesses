@@ -1,0 +1,9 @@
+name = "rlm"
+version = "1"
+image = "cybergym-harness/rlm:1"
+entry = ["python3", "/harness/main.py"]
+
+[settings]
+max_iters = 10
+max_llm_calls = 40
+max_tokens = 8000

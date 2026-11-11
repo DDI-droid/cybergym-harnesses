@@ -1,0 +1,8 @@
+name = "gepa_rlm"
+version = "1"
+pseudo = true
+
+[settings]
+max_iters = 12
+max_llm_calls = 40
+max_tokens = 8000

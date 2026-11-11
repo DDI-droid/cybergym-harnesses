@@ -1,0 +1,6 @@
+name = "null"
+version = "1"
+entry = ["python3", "/harness/main.py"]
+
+[settings]
+ping_model = false
