@@ -1,6 +1,7 @@
 name = "null"
 version = "1"
 entry = ["python3", "/harness/main.py"]
+models = ["deepseek.v3.2"]
 
 [settings]
 ping_model = false

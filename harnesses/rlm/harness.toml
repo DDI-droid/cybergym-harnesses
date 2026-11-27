@@ -2,6 +2,7 @@ name = "rlm"
 version = "1"
 image = "cybergym-harness/rlm:1"
 entry = ["python3", "/harness/main.py"]
+models = ["deepseek.v3.2"]
 
 [settings]
 max_iters = 10

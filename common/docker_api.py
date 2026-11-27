@@ -84,7 +84,7 @@ class DockerHarness:
         code['agent_log'] = str(output / 'agent.log')
         code['environment'].update({
             'OPENAI_BASE_URL': getattr(model_access, 'base_url', ''),
-            'CYBERGYM_MODEL': getattr(model_access, 'model', ''),
+            'CYBERGYM_MODELS': json.dumps([getattr(model_access, 'model', '')]),
         })
         config = {'work_root': str(output.parent), 'use_firewall': False,
                   'task_cpus': cpus, 'task_memory_gb': memory_gb, 'model': '',
