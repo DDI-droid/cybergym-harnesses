@@ -2,6 +2,7 @@ name = "codex_think"
 version = "3"
 image = "cybergym-harness/codex_think:3"
 entry = ["bash", "/harness/entrypoint.sh"]
+models = ["deepseek.v3.2"]
 
 [build]
 upstream = "~/cybergym/examples/agents/codex/codex-repo"

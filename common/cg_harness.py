@@ -17,8 +17,14 @@ def settings() -> dict[str, Any]:
     return json.loads(os.environ.get("CYBERGYM_HARNESS_SETTINGS", "{}"))
 
 
+def models() -> list[str]:
+    """The models this harness lists in its harness.toml, in that order (the runner passes them as CYBERGYM_MODELS)."""
+    return json.loads(os.environ["CYBERGYM_MODELS"])
+
+
 def model() -> str:
-    return os.environ["CYBERGYM_MODEL"]
+    """The harness's main model: the first of models()."""
+    return models()[0]
 
 
 def time_limit() -> int:

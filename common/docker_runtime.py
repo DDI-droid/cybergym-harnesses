@@ -514,7 +514,7 @@ def main() -> int:
         lm = ModelAccess(
             base_url=os.environ.get("OPENAI_BASE_URL", ""),
             api_key=os.environ.get("OPENAI_API_KEY", ""),
-            model=os.environ.get("CYBERGYM_MODEL", ""),
+            model=(json.loads(os.environ.get("CYBERGYM_MODELS") or "[]") or [""])[0],
         )
         trajectory.log("agent_start", agent_class=f"{agent_class.__module__}.{agent_class.__qualname__}")
         result = agent.solve(task, box, lm)

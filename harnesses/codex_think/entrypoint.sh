@@ -9,7 +9,8 @@ export DEEPSEEK_BASE_URL="${OPENAI_BASE_URL}"
 export DEEPSEEK_API_KEY="${OPENAI_API_KEY}"
 
 cd /workspace
-timeout -k 10 "$((limit - 30))" codex --provider deepseek --model "${CYBERGYM_MODEL}" --full-auto --quiet \
+cg_model="$(python3 -c 'import json, os; print(json.loads(os.environ["CYBERGYM_MODELS"])[0])')"
+timeout -k 10 "$((limit - 30))" codex --provider deepseek --model "${cg_model}" --full-auto --quiet \
   --max-iterations "${iterations}" "${prompt}" > /output/codex.out 2> /output/codex.err
 status=$?
 
